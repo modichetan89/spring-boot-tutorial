@@ -16,5 +16,3 @@ public class HelloController {
         return "Welcome to Daily Code Buffer!!!!!!!!";
     }
 }
-//test comments
-//rtest
