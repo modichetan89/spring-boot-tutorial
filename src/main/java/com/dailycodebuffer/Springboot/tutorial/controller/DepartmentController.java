@@ -7,10 +7,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,6 +20,8 @@ public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentService;
+
+    private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
     //Below tags are for Swagger and Open API documentation
     @Operation(summary = "Save new department")
@@ -30,12 +34,14 @@ public class DepartmentController {
             @ApiResponse(responseCode = "500", description = "Server error",
                     content = @Content) })
     @PostMapping("/departments")
-    public Department saveDepartment(@RequestBody Department department){
+    public Department saveDepartment(@Valid @RequestBody Department department){
+        LOGGER.info("Inside saveDepartment of DepartmentController");
         return departmentService.saveDepartment(department);
     }
 
     @GetMapping("/departments")
     public List<Department> fetchDepartmentList(){
+        LOGGER.info("Inside fetchDepartmentList of DepartmentController");
         return departmentService.fetchDepartmentList();
     }
 
