@@ -1,5 +1,6 @@
 package com.dailycodebuffer.Springboot.tutorial.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,4 +16,12 @@ public class HelloController {
     public String helloWorld(){
         return "Welcome to Daily Code Buffer!!!!!!!!";
     }
+
+
+//    @Value("${welcome.message}")
+//    private String welcomeMsg;
+//    @GetMapping("/welcome")
+//    public String welcome(){
+//        return welcomeMsg;
+//    }
 }
