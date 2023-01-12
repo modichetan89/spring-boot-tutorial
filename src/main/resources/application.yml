@@ -10,3 +10,60 @@
 #    driverClassName: org.h2.Driver
 #  jpa:
 #    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+server:
+  port: '8082'
+
+springdoc:
+  api-docs:
+    path: /api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+---
+spring:
+  config.activate.on-profile: dev
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp
+    driverClassName: com.mysql.jdbc.Driver
+    password: Chetan
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+#welcome:
+#  message: Welcome to Daily Code Buffer!!!!!!!!
+
+---
+spring:
+  config.activate.on-profile: qa
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp-qa
+    driverClassName: com.mysql.jdbc.Driver
+    password: Chetan
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+#welcome:
+#  message: Welcome to Daily Code Buffer!!!!!!!!
+
+---
+spring:
+  config.activate.on-profile: prod
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp-prod
+    driverClassName: com.mysql.jdbc.Driver
+    password: Chetan
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+#welcome:
+#  message: Welcome to Daily Code Buffer!!!!!!!!
